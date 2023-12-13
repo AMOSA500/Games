@@ -42,8 +42,10 @@ machine_resources = {
 
 
 # check resources
-def is_resources_enough():
-    pass
+def is_resources_enough(drink_resources):
+    for item in drink_resources:
+        print(item)
+
 
 
 start_machine = True
@@ -52,9 +54,10 @@ while start_machine:
     coffee = ['espresso', 'latte', 'cappuccino']
     choice = int(input(menu_instruction))
     if 0 <= choice <= len(coffee):
-        drink = MENU[coffee[choice]]
+        drink = MENU[coffee[choice-1]]
         # Check is resource is enough
-        print(drink)
+        if is_resources_enough(drink['ingredients']):
+            pass
 
     else:
         print('Wrong button')
