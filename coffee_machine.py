@@ -33,7 +33,28 @@ Welcome to Cooffii Shop - Table Menu?
 0. Turn off the machine\n
 """
 
+revenue = 0
+machine_resources = {
+    'water': 300,
+    'milk': 200,
+    'coffee': 100
+}
+
+
+# check resources
+def is_resources_enough():
+    pass
+
+
 start_machine = True
 
 while start_machine:
+    coffee = ['espresso', 'latte', 'cappuccino']
     choice = int(input(menu_instruction))
+    if 0 <= choice <= len(coffee):
+        drink = MENU[coffee[choice]]
+        # Check is resource is enough
+        print(drink)
+
+    else:
+        print('Wrong button')
