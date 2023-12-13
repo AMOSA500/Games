@@ -25,11 +25,15 @@ MENU = {
 }
 
 menu_instruction = """
-    Welcome to Cooffii Shop - Table Menu?
-    1. Espresso
-    2. Latte
-    3. Cappuccino
-    4. Check resources level
-    0. Turn off the machine 
-
+Welcome to Cooffii Shop - Table Menu?
+1. Espresso
+2. Latte
+3. Cappuccino
+4. Check resources level
+0. Turn off the machine\n
 """
+
+start_machine = True
+
+while start_machine:
+    choice = int(input(menu_instruction))
