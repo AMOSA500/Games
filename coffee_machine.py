@@ -53,10 +53,13 @@ def is_resources_enough(drink_resources):
 def process_coin():
     coin_type = {'quarter': 0.25, 'dime': 0.1, 'nickle': 0.05, 'pennie': 0.01}
     total = 0
-    coin = 0
-    for index, (key,value) in enumerate(coin_type.items()):
+    index = 0
+    items_list = list(coin_type.items())
+    while index < len(coin_type):
+        key, value = items_list[index]
         try:
             total += int(input(f"How many {key} do you have?"))*value
+            index += 1
         except ValueError as e:
             print(f'Please insert only coins - {e}')
     return total
