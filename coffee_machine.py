@@ -62,12 +62,11 @@ def process_coin():
             index += 1
         except ValueError as e:
             print(f'Please insert only coins - {e}')
-    return total
+    return round(total,2)
 
 
-start_machine = True
 
-while start_machine:
+while True:
     coffee = ['espresso', 'latte', 'cappuccino']
     choice = int(input(menu_instruction))
     if 0 <= choice <= len(coffee):
@@ -83,7 +82,10 @@ while start_machine:
         print(f"Coffee: {machine_resources['coffee']}g")
         print(f"Money: ${revenue}")
         print('=' * 20)
+        turn_off = int(input('Enter 0 to turn off the machine\nEnter to Continue'))
+        if turn_off == 0:
+            break
     elif choice == 0:
-        start_machine = False
+        break
     else:
         print('Wrong button')
