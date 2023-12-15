@@ -77,6 +77,8 @@ def check_transaction(price, drink):
         global revenue
         revenue += cost_of_drink
         # update the machine resources
+        for item in drink['ingredients']:
+            print(item)
 
     else:
         print("Sorry that's not enough money. Money refunded")
