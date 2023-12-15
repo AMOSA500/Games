@@ -41,6 +41,10 @@ machine_resources = {
 }
 
 
+def divisor():
+    print('=' * 20)
+
+
 # check resources
 def is_resources_enough(drink_resources):
     for item in drink_resources:
@@ -58,22 +62,36 @@ def process_coin():
     while index < len(coin_type):
         key, value = items_list[index]
         try:
-            total += int(input(f"How many {key} do you have?"))*value
+            total += int(input(f"How many {key} do you have? $")) * value
             index += 1
         except ValueError as e:
             print(f'Please insert only coins - {e}')
-    return round(total,2)
+    return round(total, 2)
 
+
+def check_transaction(price, drink):
+    cost_of_drink = drink['cost']
+    if price >= cost_of_drink:
+        change = price - cost_of_drink
+        print(f"Here is you change: ${change}")
+        global revenue
+        revenue += cost_of_drink
+        # update the machine resources
+
+    else:
+        print("Sorry that's not enough money. Money refunded")
 
 
 while True:
     coffee = ['espresso', 'latte', 'cappuccino']
     choice = int(input(menu_instruction))
     if 0 <= choice <= len(coffee):
-        drink = MENU[coffee[choice - 1]]
+        drink = MENU[coffee[choice - 1]]  # (-1) is used based on the menu list
         # Check is resource is enough
         if is_resources_enough(drink['ingredients']):
-            print(process_coin())
+            price = process_coin()
+            divisor()
+            check_transaction(price, drink)
 
     elif choice == 4:
         print('-' * 20)
@@ -81,7 +99,7 @@ while True:
         print(f"Milk: {machine_resources['milk']}ml")
         print(f"Coffee: {machine_resources['coffee']}g")
         print(f"Money: ${revenue}")
-        print('=' * 20)
+        divisor()
         turn_off = int(input('Enter 0 to turn off the machine\nEnter to Continue'))
         if turn_off == 0:
             break
