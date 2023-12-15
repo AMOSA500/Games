@@ -69,20 +69,24 @@ def process_coin():
     return round(total, 2)
 
 
-def check_transaction(price, drink):
+def check_transaction(cost, drink):
+    """
+    This function
+    :param drink:
+    :param cost:
+    :type cost: object
+    """
     cost_of_drink = drink['cost']
-    if price >= cost_of_drink:
-        change = price - cost_of_drink
+    if cost >= cost_of_drink:
+        change = cost - cost_of_drink
         print(f"Here is you change: ${change}")
         global revenue
         revenue += cost_of_drink
-        # update the machine resources
-        for item in drink['ingredients']:
-            print(item)
+        return True
 
     else:
-        print("Sorry that's not enough money. Money refunded")
-
+        print(f"Sorry that's not enough money. Money refunded. You need ${cost_of_drink} to get this coffee")
+        return False
 
 while True:
     coffee = ['espresso', 'latte', 'cappuccino']
@@ -93,7 +97,9 @@ while True:
         if is_resources_enough(drink['ingredients']):
             price = process_coin()
             divisor()
-            check_transaction(price, drink)
+            if check_transaction(price, drink):
+                pass
+
 
     elif choice == 4:
         print('-' * 20)
