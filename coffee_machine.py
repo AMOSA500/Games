@@ -79,7 +79,7 @@ def check_transaction(cost, drink):
     cost_of_drink = drink['cost']
     if cost >= cost_of_drink:
         change = cost - cost_of_drink
-        print(f"Here is you change: ${change}")
+        print(f"Here is your change of ${change} dollars")
         global revenue
         revenue += cost_of_drink
         return True
@@ -87,6 +87,27 @@ def check_transaction(cost, drink):
     else:
         print(f"Sorry that's not enough money. Money refunded. You need ${cost_of_drink} to get this coffee")
         return False
+
+
+def make_coffee(order, type_of_coffee):
+    divisor()
+    divisor()
+    print("Coffee machine resources level")
+    divisor()
+    report()
+    divisor()
+    for item in order['ingredients']:
+        machine_resources[item] -= order['ingredients'][item]
+    print(f'Here is your {type_of_coffee}')
+
+
+def report(show_profit=0):
+    print(f"Water: {machine_resources['water']}ml")
+    print(f"Milk: {machine_resources['milk']}ml")
+    print(f"Coffee: {machine_resources['coffee']}g")
+    if show_profit == 1:
+        print(f"Money: ${revenue}")
+
 
 while True:
     coffee = ['espresso', 'latte', 'cappuccino']
@@ -98,18 +119,14 @@ while True:
             price = process_coin()
             divisor()
             if check_transaction(price, drink):
-                pass
-
+                make_coffee(drink, coffee[choice-1])
 
     elif choice == 4:
         print('-' * 20)
-        print(f"Water: {machine_resources['water']}ml")
-        print(f"Milk: {machine_resources['milk']}ml")
-        print(f"Coffee: {machine_resources['coffee']}g")
-        print(f"Money: ${revenue}")
+        report(1)
         divisor()
-        turn_off = int(input('Enter 0 to turn off the machine\nEnter to Continue'))
-        if turn_off == 0:
+        turn_off = input('Enter 0 to turn off the machine\nEnter to Continue')
+        if turn_off == '0':
             break
     elif choice == 0:
         break
