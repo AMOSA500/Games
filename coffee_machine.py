@@ -76,10 +76,14 @@ def check_transaction(cost, drink):
     :param cost:
     :type cost: object
     """
+    print("Coffee machine resources level")
+    divisor()
+    report()
+    divisor()
     cost_of_drink = drink['cost']
     if cost >= cost_of_drink:
         change = cost - cost_of_drink
-        print(f"Here is your change of ${change} dollars")
+        print(f"Cooffii Receipt - Customer Copy\nYou have ${cost} USD\nDrink cost: ${cost_of_drink} USD\nHere is your change of ${change} dollars")
         global revenue
         revenue += cost_of_drink
         return True
@@ -90,15 +94,10 @@ def check_transaction(cost, drink):
 
 
 def make_coffee(order, type_of_coffee):
-    divisor()
-    divisor()
-    print("Coffee machine resources level")
-    divisor()
-    report()
-    divisor()
     for item in order['ingredients']:
         machine_resources[item] -= order['ingredients'][item]
     print(f'Here is your {type_of_coffee}')
+    divisor()
 
 
 def report(show_profit=0):
@@ -120,6 +119,9 @@ while True:
             divisor()
             if check_transaction(price, drink):
                 make_coffee(drink, coffee[choice-1])
+                turn_off = input('Enter 0 to turn off the machine\nEnter to Continue')
+                if turn_off == '0':
+                    break
 
     elif choice == 4:
         print('-' * 20)
