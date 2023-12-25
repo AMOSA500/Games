@@ -1,36 +1,25 @@
-from turtle import Turtle, Screen
+import CreateTurtles as Tt
 import random
-# Turtle Object
 
-color = ['red','orange','yellow','green','blue','purple']
+# Variable declaration
+Tt.create_turtles().make_screen()
+color = Tt.create_turtles().color
 is_race_on = False
-turtle_list = []
 
-# Screen Setup
-screen = Screen()
-screen.setup(width=500, height=500)
-choice_color = screen.textinput(title='Turtle Race: ', prompt='Which Turtle will win the race? Enter a color')
+# User make a Bet
+choice_color = Tt.create_turtles().screen.textinput(title='Turtle Race: ', prompt='Which Turtle will win the race? '
+                                                                                  'Enter a color')
 
+# Draw the Finished Line
+Tt.draw_finished_line()
 
-finish_line = Turtle()
-finish_line.penup()
-finish_line.goto(230,150)
-finish_line.setheading(finish_line.heading() + 270)
-finish_line.pendown()
-finish_line.forward(300)
-
-y = -150
-for x in color:
-    t = Turtle(shape='turtle')
-    t.penup()
-    t.color(x)
-    t.goto(x=-230, y=y)
-    y += 50
-    turtle_list.append(t)
+# Create Turtle Racing Object
+turtle_list = Tt.create_turtles().create_turtle_racer()
 
 if choice_color in color:
-
     is_race_on = True
+else:
+    print("Select color not in the race")
 
 while is_race_on:
     for tt in turtle_list:
@@ -42,8 +31,7 @@ while is_race_on:
                 print(f'You lose ({choice_color}). The Turtle {win_color} won the race')
             is_race_on = False
 
-        distance = random.randint(0,10)
+        distance = random.randint(0, 10)
         tt.forward(distance)
 
-
-screen.exitonclick()
+Tt.create_turtles().screen.exitonclick()
