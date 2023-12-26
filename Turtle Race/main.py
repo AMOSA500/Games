@@ -1,20 +1,23 @@
-import CreateTurtles as Tt
+import CreateTurtles as cT
 import random
 
+# Initialisation declaration
+Tt = cT.create_turtles()
+Tt.make_screen()
+
 # Variable declaration
-Tt.create_turtles().make_screen()
-color = Tt.create_turtles().color
+color = Tt.color
 is_race_on = False
 
 # User make a Bet
-choice_color = Tt.create_turtles().screen.textinput(title='Turtle Race: ', prompt='Which Turtle will win the race? '
-                                                                                  'Enter a color')
+choice_color = Tt.screen.textinput(title='Turtle Race: ', prompt='Which Turtle will win the race? '
+                                                                 'Enter a color')
 
 # Draw the Finished Line
-Tt.draw_finished_line()
+cT.draw_finished_line()
 
 # Create Turtle Racing Object
-turtle_list = Tt.create_turtles().create_turtle_racer()
+turtle_list = Tt.create_turtle_racer()
 
 if choice_color in color:
     is_race_on = True
@@ -34,4 +37,4 @@ while is_race_on:
         distance = random.randint(0, 10)
         tt.forward(distance)
 
-Tt.create_turtles().screen.exitonclick()
+Tt.screen.exitonclick()
