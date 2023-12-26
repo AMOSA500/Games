@@ -5,7 +5,7 @@ import show_winner as sw
 
 def start_game():
     # Initialisation declaration
-    tt_obj = cT.create_turtles()
+    tt_obj = cT.CreateTurtle()
     tt_obj.make_screen()
 
     # Variable declaration
@@ -38,8 +38,8 @@ def start_game():
                             tt_obj.turtle_list.clear()
                             start_game()
                         else:
-                            is_race_on = False
                             tt_obj.screen.bye()
+                            break
                     else:
                         sw.show_message(f'You lose ({choice_color}). The Turtle {win_color} won the race')
                         exit_game = tt_obj.screen.numinput(title='Exit Game', prompt='Enter 1 to restart or 0 to Exit',
@@ -49,8 +49,8 @@ def start_game():
                             tt_obj.turtle_list.clear()
                             start_game()
                         else:
-                            is_race_on = False
                             tt_obj.screen.bye()
+                            break
 
                 distance = random.randint(0, 10)
                 tt.forward(distance)
