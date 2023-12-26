@@ -10,7 +10,7 @@ def draw_finished_line():
     finish_line.forward(300)
 
 
-class create_turtles:
+class CreateTurtle:
     def __init__(self):
         self.screen = Screen()
         self.color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
