@@ -42,7 +42,7 @@ def start_game():
                             try:
                                 tt_obj.screen.bye()
                             except SystemError as e:
-                                print('Game Ended')
+                                print('User Ended Game')
                     else:
                         sw.show_message(f'You lose ({choice_color}). The Turtle {win_color} won the race')
                         exit_game = tt_obj.screen.numinput(title='Exit Game', prompt='Enter 1 to restart or 0 to Exit',
