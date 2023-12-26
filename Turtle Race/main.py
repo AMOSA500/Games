@@ -39,24 +39,18 @@ def start_game():
                             start_game()
                         else:
                             is_race_on = False
-                            try:
-                                tt_obj.screen.bye()
-                            except SystemError as e:
-                                print('User Ended Game')
+                            tt_obj.screen.bye()
                     else:
                         sw.show_message(f'You lose ({choice_color}). The Turtle {win_color} won the race')
                         exit_game = tt_obj.screen.numinput(title='Exit Game', prompt='Enter 1 to restart or 0 to Exit',
                                                            default=int)
-                        if exit_game == 1:  # Restart
+                        if exit_game == 1: # Restart
                             tt_obj.screen.clear()
                             tt_obj.turtle_list.clear()
                             start_game()
                         else:
                             is_race_on = False
-                            try:
-                                tt_obj.screen.bye()
-                            except SystemError as e:
-                                print('Game Ended')
+                            tt_obj.screen.bye()
 
                 distance = random.randint(0, 10)
                 tt.forward(distance)
