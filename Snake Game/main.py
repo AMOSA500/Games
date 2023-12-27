@@ -15,6 +15,7 @@ snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
 
+
 screen.listen()
 screen.onkey(snake.up, 'Up')
 screen.onkey(snake.down, 'Down')
@@ -35,5 +36,9 @@ while is_game_on:
         food.refresh()
         scoreboard.score_point()
 
+    # Detect collision with wall
+    if int(snake.head.xcor()) > 240 or snake.head.xcor() < -240 or snake.head.ycor() > 240 or snake.head.ycor() < -240:
+        scoreboard.game_over()
+        is_game_on = False
 
 screen.exitonclick()
