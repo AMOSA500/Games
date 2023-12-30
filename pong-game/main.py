@@ -1,7 +1,9 @@
 from turtle import Screen, Turtle
 from pong import Pong
+from ball import Ball
 
 screen = Screen()
+screen.colormode(255)
 screen.bgcolor('black')
 screen.setup(800, 600)
 screen.title('Pong Game')
@@ -10,6 +12,7 @@ screen.tracer(0)
 # Create a paddle - default size is 20x20
 r_paddle = Pong((350, 0),'white')
 l_paddle = Pong((-350, 0),'orange')
+ball = Ball()
 
 # Create Paddle movement
 screen.listen()
