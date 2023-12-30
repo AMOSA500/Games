@@ -4,8 +4,9 @@ screen = Screen()
 screen.bgcolor('black')
 screen.setup(800, 600)
 screen.title('Pong Game')
+screen.tracer(0)
 
-# Create a paddle
+# Create a paddle - default size is 20x20
 paddle = Turtle('square')
 paddle.penup()
 paddle.color('white')
@@ -25,7 +26,13 @@ def go_down():
 
 # Create Paddle movement
 screen.listen()
-screen.onkey(go_up, 'Up')
-screen.onkey(go_down, 'Down')
+screen.onkeypress(go_up, 'Up')
+screen.onkeypress(go_down, 'Down')
+
+# Main Game
+is_game_on = True
+while is_game_on:
+    screen.update()
+
 
 screen.exitonclick()
