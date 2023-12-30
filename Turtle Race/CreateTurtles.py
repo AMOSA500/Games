@@ -3,6 +3,7 @@ from turtle import Turtle, Screen
 
 def draw_finished_line():
     finish_line = Turtle()
+    finish_line.hideturtle()
     finish_line.penup()
     finish_line.goto(230, 150)
     finish_line.setheading(finish_line.heading() + 270)
