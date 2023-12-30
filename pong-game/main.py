@@ -9,8 +9,8 @@ screen.title('Pong Game')
 paddle = Turtle('square')
 paddle.penup()
 paddle.color('white')
-paddle.shapesize(stretch_len=20, stretch_wid=100)
-paddle.goto(0,0)
+paddle.shapesize(stretch_len=1, stretch_wid=5)
+paddle.goto(350,0)
 
 
 screen.exitonclick()
