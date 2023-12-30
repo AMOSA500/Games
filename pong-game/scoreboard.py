@@ -12,13 +12,19 @@ class ScoreBoard(Turtle):
         self.hideturtle()
         self.color('white')
         self.goto(position)
-        self.point = 0
-        self.display()
+        self.r_point = 0
+        self.l_point = 0
+        self.update_display()
 
-    def display(self):
-        self.write(f'{self.point}', move=False, align=TEXT_ALIGN, font=('Arial', FONT_SIZE, FONT_TYPE))
+    def update_display(self):
+        self.write('0', move=False, align=TEXT_ALIGN, font=('Arial', FONT_SIZE, FONT_TYPE))
 
-    def increment(self):
+    def l_display(self):
         self.clear()
-        self.point += 1
-        self.write(f'{self.point}', move=False, align=TEXT_ALIGN, font=('Arial', FONT_SIZE, FONT_TYPE))
+        self.l_point += 1
+        self.write(f'{self.l_point}', move=False, align=TEXT_ALIGN, font=('Arial', FONT_SIZE, FONT_TYPE))
+
+    def r_display(self):
+        self.clear()
+        self.r_point += 1
+        self.write(f'{self.r_point}', move=False, align=TEXT_ALIGN, font=('Arial', FONT_SIZE, FONT_TYPE))

@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from pong import Pong
 from ball import Ball
 import time
@@ -21,7 +21,6 @@ ball = Ball()
 # centerline.centerline()
 l_score = ScoreBoard((-50, 240))
 r_score = ScoreBoard((50, 240))
-
 
 # Create Paddle movement
 screen.listen()
@@ -50,11 +49,11 @@ if message:
             ball.bounce_x()
 
         # Detect if right paddle missed the ball
-        if ball.xcor() > 390: # Right paddle
-            l_score.increment()
+        if ball.xcor() > 390:  # Right paddle
+            l_score.l_display()
             ball.start_point()
-        if ball.xcor() < -390: # Left paddle
-            r_score.increment()
+        if ball.xcor() < -390:  # Left paddle
+            r_score.r_display()
             ball.start_point()
 
 else:
