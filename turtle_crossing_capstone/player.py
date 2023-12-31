@@ -8,16 +8,10 @@ class Player(Turtle):
         self.color('black')
         self.penup()
         self.setheading(90)
-        self.goto(0, -280)
+        self.refresh()
 
     def go_up(self):
         self.forward(20)
 
-    def go_down(self):
-        self.backward(20)
-
-    def go_left(self):
-        self.left(20)
-
-    def go_right(self):
-        self.right(20)
+    def refresh(self):
+        self.goto(0, -280)

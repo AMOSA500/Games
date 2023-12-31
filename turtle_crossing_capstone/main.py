@@ -14,18 +14,20 @@ screen.tracer(0)
 player = Player()
 traffic = Cars()
 
-# Create screen listener
+# Create screen listener - The turtle only moves forward
 screen.listen()
 screen.onkey(player.go_up, 'Up')
-screen.onkey(player.go_down, 'Down')
-screen.onkey(player.go_left, 'Left')
-screen.onkey(player.go_right, 'Right')
 
 
 is_game_on = True
 while is_game_on:
     screen.update()
     time.sleep(0.1)
+
+    # Collision with the finish line
+    if player.ycor() > 290:
+        print('Change level')
+        player.refresh()
 
 screen.exitonclick()
 
