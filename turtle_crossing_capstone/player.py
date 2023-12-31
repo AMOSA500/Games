@@ -10,12 +10,12 @@ class Player(Turtle):
         self.color('black')
         self.penup()
         self.setheading(90)
-        self.refresh()
+        self.go_to_start()
 
     def go_up(self):
         self.forward(20)
 
-    def refresh(self):
+    def go_to_start(self):
         self.goto(DEFAULT_POSITION)
 
     def is_at_finish_point(self):

@@ -1,6 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import  Screen
 from player import Player
 from traffic import Cars
+from scoreboard import Scoreboard
 import time
 
 # Create the turtle screen
@@ -13,6 +14,7 @@ screen.tracer(0)
 # Create a player
 player = Player()
 car = Cars()
+level = Scoreboard()
 
 # Create screen listener - The turtle only moves forward
 screen.listen()
@@ -29,12 +31,14 @@ while is_game_on:
 
     # Collision with the finish line
     if player.is_at_finish_point():
-        print('Change level')
-        player.refresh()
+        car.increase_speed()
+        level.next_level()
+        player.go_to_start()
 
     # Detect Collision with Cars
     for vehicle in car.all_cars:
-        if player.distance(vehicle) < 15:
+        if player.distance(vehicle) < 20:
+            level.game_over()
             is_game_on = False
 
 screen.exitonclick()

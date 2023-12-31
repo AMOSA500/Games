@@ -2,17 +2,19 @@ from turtle import Turtle
 import random
 
 STARTING_MOVE_DISTANCE = 5
+LEVEL_UP = 5
 
 
-class Cars():
+class Cars:
     def __init__(self):
         super().__init__()
         self.all_cars = []
+        self.speed_up = STARTING_MOVE_DISTANCE
 
     def create_car(self):
-        y_cor = random.randrange(-250, 250, 30)
+        y_cor = random.randint(-250, 250)
         intervals = random.randint(1, 6)
-        if intervals == 1:
+        if intervals % 3 == 0:
             car = Turtle()
             car.penup()
             car.shape('square')
@@ -30,4 +32,7 @@ class Cars():
 
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.speed_up)
+
+    def increase_speed(self):
+        self.speed_up += LEVEL_UP
