@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+DEFAULT_POSITION = (0, -280)
+
 
 class Player(Turtle):
     def __init__(self):
@@ -14,4 +16,4 @@ class Player(Turtle):
         self.forward(20)
 
     def refresh(self):
-        self.goto(0, -280)
+        self.goto(DEFAULT_POSITION)

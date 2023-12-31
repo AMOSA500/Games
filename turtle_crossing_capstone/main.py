@@ -21,8 +21,12 @@ screen.onkey(player.go_up, 'Up')
 
 is_game_on = True
 while is_game_on:
-    screen.update()
+
     time.sleep(0.1)
+    screen.update()
+    if traffic.all_cars[-1].xcor() < 250:
+        traffic.create_car()
+    traffic.move_cars()
 
     # Collision with the finish line
     if player.ycor() > 290:
