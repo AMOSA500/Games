@@ -17,3 +17,9 @@ class Player(Turtle):
 
     def refresh(self):
         self.goto(DEFAULT_POSITION)
+
+    def is_at_finish_point(self):
+        if self.ycor() > 290:
+            return True
+        else:
+            return False
