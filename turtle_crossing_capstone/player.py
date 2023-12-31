@@ -1,5 +1,6 @@
 from turtle import Turtle
 
+
 class Player(Turtle):
     def __init__(self):
         super().__init__()
@@ -11,3 +12,12 @@ class Player(Turtle):
 
     def go_up(self):
         self.forward(20)
+
+    def go_down(self):
+        self.backward(20)
+
+    def go_left(self):
+        self.left(20)
+
+    def go_right(self):
+        self.right(20)

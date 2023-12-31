@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen
 from player import Player
+from traffic import Cars
 import time
 
 # Create the turtle screen
@@ -11,10 +12,14 @@ screen.tracer(0)
 
 # Create a player
 player = Player()
+traffic = Cars()
 
 # Create screen listener
 screen.listen()
 screen.onkey(player.go_up, 'Up')
+screen.onkey(player.go_down, 'Down')
+screen.onkey(player.go_left, 'Left')
+screen.onkey(player.go_right, 'Right')
 
 
 is_game_on = True
