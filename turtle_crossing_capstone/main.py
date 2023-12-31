@@ -24,8 +24,7 @@ while is_game_on:
 
     time.sleep(0.1)
     screen.update()
-    if traffic.all_cars[-1].xcor() < 250:
-        traffic.create_car()
+    traffic.create_car()
     traffic.move_cars()
 
     # Collision with the finish line

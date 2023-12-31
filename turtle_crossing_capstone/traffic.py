@@ -10,14 +10,16 @@ class Cars():
         self.all_cars = []
 
     def create_car(self):
-        y_cor = random.randrange(-250, 250, 10)
-        car = Turtle()
-        car.penup()
-        car.shape('square')
-        car.shapesize(stretch_len=2, stretch_wid=1)
-        car.color(self.traffic_color())
-        car.goto(300, y_cor)
-        self.all_cars.append(car)
+        y_cor = random.randrange(-250, 250, 30)
+        intervals = random.randint(1, 6)
+        if intervals == 1:
+            car = Turtle()
+            car.penup()
+            car.shape('square')
+            car.shapesize(stretch_len=2, stretch_wid=1)
+            car.color(self.traffic_color())
+            car.goto(300, y_cor)
+            self.all_cars.append(car)
 
     @staticmethod
     def traffic_color():
