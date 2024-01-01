@@ -41,29 +41,34 @@ def main():
         if snake.head.distance(food) < 15:
             food.clear()
             food.reload_food()
-            scoreboard.show_score()
+            scoreboard.increase_score()
             snake.extend()
 
         # Collision with walls
         if snake.head.xcor() < -290 or snake.head.xcor() > 290 or snake.head.ycor() < -290 or snake.head.ycor() > 290:
-            restart = messagebox.askyesno('Snake Board Game', 'Restart the Snake Game')
+            restart = messagebox.askyesno('Snake Game', 'Hit Wall! Do want to continue?')
             if restart:
-                screen.clear()
-                main()
+                scoreboard.reset_score()
+                snake.reset_snake()
+                # Continues snake through the wall
+                # x_cor = snake.head.xcor()
+                # y_cor = snake.head.ycor()
+                # if x_cor < 0 or x_cor > 0:
+                #     snake.head.goto(x_cor*-1, y_cor)
+                # if y_cor < 0 or y_cor > 0:
+                #     snake.head.goto(x_cor, y_cor * -1)
             else:
                 is_game_over = False
-                scoreboard.game_over()
 
         # Collision with snake body
         for seg in snake.segment[1:]:
             if seg.distance(snake.head) < 10:
-                restart = messagebox.askyesno('Snake Board Game', 'Restart the Snake Game')
+                restart = messagebox.askyesno('Snake Game', 'Hit Wall! Do want to continue?')
                 if restart:
-                    screen.clear()
-                    main()
+                    scoreboard.reset_score()
+                    snake.reset_snake()
                 else:
                     is_game_over = False
-                    scoreboard.game_over()
 
     screen.exitonclick()
 

@@ -1,7 +1,6 @@
 from turtle import Turtle
 import random
 
-
 DEFAULT_POSITION = [(-21, 0), (-42, 0), (-63, 0)]
 
 
@@ -31,6 +30,13 @@ class Snake:
         snake_obj.goto(position)
         self.segment.append(snake_obj)
 
+    def reset_snake(self):
+        for seg in self.segment:
+            seg.hideturtle()
+        self.segment.clear()
+        self.create_snake()
+        self.head = self.segment[0]
+
     def extend(self):
         self.add_segment(self.segment[-1].position())
 
@@ -40,7 +46,6 @@ class Snake:
             y_cor = self.segment[snake - 1].ycor()
             self.segment[snake].goto(x_cor, y_cor)
         self.head.forward(20)
-
 
     def up(self):
         if self.head.heading() != 270:
