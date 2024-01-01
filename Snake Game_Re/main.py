@@ -59,6 +59,7 @@ def main():
                 #     snake.head.goto(x_cor, y_cor * -1)
             else:
                 is_game_over = False
+                screen.bye()
 
         # Collision with snake body
         for seg in snake.segment[1:]:
@@ -69,8 +70,7 @@ def main():
                     snake.reset_snake()
                 else:
                     is_game_over = False
-
-    screen.exitonclick()
+                    screen.bye()
 
 
 main()
