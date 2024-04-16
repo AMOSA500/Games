@@ -30,16 +30,30 @@ screen.onkey(paddle_left.go_up,"w")
 screen.onkey(paddle_left.go_down,"s")
 
 while(True):
-    time.sleep(0.1)
+    time.sleep(0.2)
     screen.update()
     ball.move()
     
-    # Detect collision
+    # Detect collision with wall
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
     
     # Detect a score on the Right, if paddle misses ball
     if ball.xcor() > 380:
         ball.reset_ball_pos() # Reset ball position
+        scoreboard.l_point()
+    
+    # Detect a score on the Left, if paddle misses ball
+    if ball.xcor() < -380:
+        ball.reset_ball_pos() # Reset ball position
+        scoreboard.r_point()
+        
+    # Detect collision with paddle
+    
+    if ball.distance(paddle_right) < 30 and ball.xcor() > 340:
+        ball.bounce_x()
+    
+    if ball.distance(paddle_left) < 30 and ball.xcor() < -340:
+        ball.bounce_x()
     
 screen.exitonclick()
